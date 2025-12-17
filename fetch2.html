@@ -27,7 +27,7 @@
 
 function getEvents(){
     //建立FETCH請求及實質內容
-fetch('https://kktix.com/events.json')
+fetch('testApi.php')
 .then(function(response){
     
     //回傳是josn時
@@ -43,7 +43,7 @@ fetch('https://kktix.com/events.json')
     console.log(data)
     let html=''
     data.entry.forEach(function(event){
-       // console.log(event.author.name,event.title)
+        //console.log(event.author.name,event.title)
         
         html=html+`<li>
                         <div>${event.title}</div>

@@ -33,3 +33,17 @@
     text-align: center;
     font-size:32px;
 }
+
+ul li{
+    display: flex;
+    justify-content: space-between;
+    padding:0.5rem 1rem;
+    margin: 5px;
+    background:rgb(4, 146, 146);
+    color:white;
+}
+
+ul li:hover{
+    background-color:rgba(253, 158, 49, 0.541);
+    color:brown;
+}

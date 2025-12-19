@@ -8,11 +8,15 @@
     <link rel="shortcut icon" href="#" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <!---匯入要使用的函式庫--->
-
+    <script src="jquery-3.7.1.js"></script>
 
 </head>
 <body>
   <h1 class="header">學生資料管理系統</h1>
+  <h2>班級列表</h2>
+  <div class="class-list">
+      <!---班級清單--->
+  </div>
 
   
 </body>
@@ -36,7 +40,17 @@ function create(){
 function query(){
 
 }
-
+//取得班級清單的函式
+function getClassrooms(){
+  $.getJSON("./api/get_classrooms.php",function(classrooms){
+      console.log(classrooms);
+      let html="";
+      classrooms.forEach(function(code){
+          html+=`<div class="classroom">${code}</div>`;
+      });
+      $('.class-list').html(html);
+  })
+}
 //編輯資料的函式
 function update(){
 

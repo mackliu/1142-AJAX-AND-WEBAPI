@@ -34,6 +34,19 @@
         background-color: #e0e0e0;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       }
+      .student,.item {
+    display: flex;
+    width: 85%;
+    margin: 2px auto;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+}
+
+.student div,.item div {
+    width: 20%;
+    text-align: center;
+}
     </style>
 </head>
 <body>
@@ -42,15 +55,20 @@
   <div class="class-list">
       <!---班級清單--->
   </div>
-  <div class="student-list">
+  <div class="list-header">
       <!---學生清單--->
-      <div class="student">
+      <div class="item">
         <div>學號</div>
         <div>座號</div>
         <div>姓名</div>
         <div>生日</div>
         <div>主修</div>
+        <div>操作</div>
       </div>
+  </div>
+  <div class="student-list">
+      <!---學生清單--->
+
   </div>
 
   
@@ -104,6 +122,10 @@ function getStudents(class_code){
                       <div>${student.name}</div>
                       <div>${student.birthday}</div>
                       <div>${student.major}</div>
+                      <div>
+                          <button onclick="update()">編輯</button>
+                          <button onclick="del()">刪除</button>
+                      </div>
                     </div>`;
         $('.student-list').append(student);
       })

@@ -26,8 +26,8 @@
     ********************************************************/
      
     //利用$.ajax()方法傳送請求並取得回應
-    $.ajax(
-      {
+    //$.ajax(
+/*       {
         url:'https://kktix.com/events.json',
         type:'GET',
         success:(response)=>{
@@ -40,7 +40,7 @@
                         <div>${item.title}</div>
                         <div>${item.author.name}</div>
                     </li>`)
-        })
+        }) */
         /* let html=''
         response.entry.forEach(function(event){
        // console.log(event.author.name,event.title)  
@@ -51,14 +51,26 @@
           }) */
 
         //document.querySelector("ul").innerHTML=html
-        }
+        //}
 /*         error:()=>{},
         complete:()=>{} */
-      }
-    )   
+      //}
+    //)   
 
     
     //利用$.get()方法傳送請求並取得回應
+
+    $.get('https://kktix.com/events.json',(response)=>{
+      console.log(response)
+      $(".title").html(response.title)
+        
+        $.each(response.entry,(idx,item)=>{
+          $("ul").append(`<li>
+                        <div>${item.title}</div>
+                        <div>${item.author.name}</div>
+                    </li>`)
+        }) 
+    })  
 
 
   </script>

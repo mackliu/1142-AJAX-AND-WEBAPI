@@ -11,12 +11,14 @@
     <script src="jquery-3.7.1.js"></script>
     <style>
       .class-list {
-        width: 70%;
+        width: 85%;
         padding: 20px;
         display: flex;
         gap: 10px;
         flex-wrap: wrap;
         justify-content: space-around;
+        margin:0 auto;
+        border-bottom: 2px solid #ccc;
       }
 
       .classroom {
@@ -39,6 +41,16 @@
   <h2>班級列表</h2>
   <div class="class-list">
       <!---班級清單--->
+  </div>
+  <div class="student-list">
+      <!---學生清單--->
+      <div class="student">
+        <div>學號</div>
+        <div>座號</div>
+        <div>姓名</div>
+        <div>生日</div>
+        <div>主修</div>
+      </div>
   </div>
 
   
@@ -72,11 +84,34 @@ function getClassrooms(){
       let html="";
       let keys=Object.keys(classrooms);
       keys.forEach(function(code){
-          html+=`<div class="classroom">${classrooms[code]}</div>`;
+          html+=`<div class="classroom" onclick="getStudents('${code}')">${classrooms[code]}</div>`;
       });
       $('.class-list').html(html);
   })
 }
+
+//取得學生清單的函式
+function getStudents(class_code){
+
+  $.getJSON("./api/get_students.php",{class_code},(students)=>{
+      console.log(students);
+        let student;
+        $('.student-list').html('');
+      $.each(students,(idx,student)=>{
+        student=`<div class="student">
+                      <div>${student.uni_id}</div>
+                      <div>${student.seat_num}</div>
+                      <div>${student.name}</div>
+                      <div>${student.birthday}</div>
+                      <div>${student.major}</div>
+                    </div>`;
+        $('.student-list').append(student);
+      })
+
+  })
+
+}
+
 //編輯資料的函式
 function update(){
 

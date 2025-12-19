@@ -125,3 +125,6 @@ function q($sql){
 function to($url){
     header("location:".$url);
 }
+
+
+$Student=new DB('students');
